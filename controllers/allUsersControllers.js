@@ -143,28 +143,58 @@ function acceptInstructor(req, res){
 function courseCompletion(req,res){
     console.log(req.body)
     // course= req.body.course_name
-    UserCTRl.User.findOne({email:req.body.k,"coursesEnrolled.modules":req.body.module},(err,data) =>{
+    UserCTRl.User.findOne({email:req.body.email},(err,data) =>{
         if(err){
             res.send("error");
         }
         else{
-            if(data != null){
-                res.send("already completed the module");
-            }
-            else{
-                UserCTRl.User.updateOne(
-                    {email:req.body.k,"coursesEnrolled.name":req.body.course_name},
-                    {$push:{"coursesEnrolled.0.modules":req.body.module}},(err,docs) =>{
-                        if(err){
-                            console.log(err)
-        
-                        }else{
-                            console.log(docs)
+            // if(data != null){
+            //     res.send("already completed the module");
+            // }
+            // else{
+                console.log(data)
+                courses = data.coursesEnrolled
+                // console.log(courses)
+                for(var i=0; i<courses.length; i++){
+                    if(courses[i].name === req.body.course_name){
+                        for(var j=0; j < courses[i].modules.length; j++){
+                            if(courses[i].modules[j] === req.body.module){
+                                var flag = 1;
+                                res.send("Already enrolled")
+                                break;
+                            }
                         }
                     }
-                )
-                res.send("done");
+                }
+                if(flag != 1){
+                for(let i = 0; i < courses.length; i++) {
+                    if(courses[i].name === req.body.course_name){
+                        console.log(courses[i])
+                        courses[i].modules.push(req.body.module)
+                        console.log(courses[i])
+                        UserCTRl.User.updateOne({email: req.body.email}, {$set:{coursesEnrolled: courses}},(err,docs) =>{
+                            if(err){
+                                console.log(err)
+                            }else{
+                                res.send(docs)
+                        }
+                    })       
+                    }
+                // }
+                // UserCTRl.User.updateOne(
+                //     {email:req.body.k,"coursesEnrolled.name":req.body.course_name},
+                //     {$push:{"coursesEnrolled.0.modules":req.body.module}},(err,docs) =>{
+                //         if(err){
+                //             console.log(err)
+        
+                //         }else{
+                //             console.log(docs)
+                //         }
+                //     }
+                // )
             }
+        }
+            //res.send("not found")
         }
     })
 }

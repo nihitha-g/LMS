@@ -69,7 +69,7 @@ $(document).ready(function() {
           <input type="radio" name="question1" value="4" id="d">
           <label for="d">${module.quiz.Options[3]}</label><br><br>
         
-          <button id="submit" class="submit" onclick="checkAnswer('${module.quiz.question}', '${module.quiz.CorrectOption}')">Submit Answer</button>
+          <button id="submit" class="submit" onclick="checkAnswer('${module.quiz.question}', '${module.quiz.CorrectOption}','${courseData.course_name}','${module.module_name}')">Submit Answer</button>
          
         </div>                      
           </div>        
@@ -90,24 +90,28 @@ document.getElementById("submit").addEventListener("click", function() {
   window.location.href = "coursecontent.html";
 });
 
-function checkAnswer(quizId, correctAnswer) {
+function checkAnswer(quizId, correctAnswer ,course_name,module) {
   var quiz = document.getElementById(quizId);
   var selectedAnswer = quiz.querySelector('input[name=question1]:checked').value;
   console.log(selectedAnswer)
+
 update={
-  courseName:courseName
+  email:localStorage.getItem('k'),
+  course_name:course_name,
+  module:module,
 }
+console.log(update)
   if (selectedAnswer === correctAnswer) {
- 
+ update =JSON.stringify(update)
         $.ajax({
       url: 'http://localhost:9999/a/CourseComplete',
       type: 'POST',
       contentType: 'application/json',
       data:update,
 success: function(data) {
-
-}
-    })
+  console.log(data);
+},error: function(err) {
+alert(err);   }})
  
     alert('Correct answer!');
 
@@ -117,3 +121,4 @@ success: function(data) {
   
   window.location.href="coursecontent.html"
 }
+
