@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Users</title>
+    <title>Services</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -30,6 +30,7 @@
     <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
 
@@ -37,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
-        
+
 </head>
 
 <body class="animsition">
@@ -66,12 +67,13 @@
                             <a class="js-arrow" href="index.html">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
-                        <li class="active">
+                     
+                        <li>
                             <a href="user.html">
                                 <i class="fas fa-table"></i>Users</a>
                         </li>
-                      
-                        <li>
+                     
+                        <li class="active">
                             <a href="ins_request.html">
                                 <i class="fas fa-chart-bar"></i>Instructors_requests</a>
                         </li>
@@ -104,13 +106,12 @@
                             <a class="js-arrow" href="index.html">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>   
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="user.html">
                                 <i class="fas fa-table"></i>Users</a>
                         </li>
 
-                       
-                        <li>
+                        <li class="active">
                             <a href="ins_request.html">
                                 <i class="fas fa-chart-bar"></i>Instructors_requests</a>
                         </li>
@@ -135,16 +136,19 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
-                                <!-- <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." /> -->
+                            <button class="btn btn-info" style="color: blue;" type="HOME">
+                                <a href="../frontend/index.html"><div style="color:white">HOME</div></a>
+                                <!-- <i class="zmdi zmdi-search"></i> -->
+                            </button>
+                            <!-- <form class="form-header" action="" method="POST">
                                 <button class="btn btn-info" style="color: blue;" type="HOME">
-                                    <a href="../frontend/index.html"><div style="color:white">HOME</div></a>
-                                    <!-- <i class="zmdi zmdi-search"></i> -->
+                                    <a href="../index.html"><div style="color:white">HOME</div></a>
+                                     <i class="zmdi zmdi-search"></i> -->
                                 </button>
-                            </form>
+                            </form> -->
                             <div class="header-button">
                                 <div class="noti-wrap">
-                                </div>
+                                    </div>
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
@@ -164,7 +168,7 @@
                                                     <h5 class="name">
                                                         <a href="#">ADMIN</a>
                                                     </h5>
-                                                    <span class="email">ADMIN@EMAIL.com</span>
+                                                    <span class="email">ADMIN@EMAIL.COM</span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
@@ -199,88 +203,107 @@
             <div class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        
-                        <div class="row">
-                            <div class="col-md-12">
-                                <!-- DATA TABLE -->
-                                <h3 class="title-5">Users table</h3>
-                                <div class="table-data__tool">
-                                    <div class="table-data__tool-right">
-                                        
-                                        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-                                            <!-- <select class="js-select2" name="type">
-                                                <option selected="selected">Delete</option>
-                                                
-                                            </select> -->
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="table-responsive table-responsive-data2">
-                                    <table class="display" id="users_table" style="width: 100%;">
-            
-                                    </table>
-                                  </div>
-                                  
-                                <!-- END DATA TABLE -->
+                        <div class="event-schedule-area-two bg-color pad100">
+                            <div class="container">
+                            <div class="row">
+                            <div class="col-lg-12">
+                            <div class="section-title text-center">
+                            <div class="title-text">
+                            <h2>Instructor Application</h2>
                             </div>
-                        </div>
+                            <p>
+                            Following are the pending request of <br />
+                            Instructors
+                            </p>
+                            </div>
+                            </div>
+                            
+                            </div>
+                            
+                            <div class="row">
+                            <div class="col-lg-12">
+                            <ul class="nav custom-tab" id="myTab" role="tablist">
+                            <li class="nav-item">
+                            <a class="nav-link active show" id="home-taThursday" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"></a>
+                            </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade active show" id="home" role="tabpanel">
+                            <div class="table-responsive">
+                            <table class="table">
+                            <thead>
+                            <tr>
+                            <th scope="col">SR No</th>
+                            
+                            <th scope="col">Details</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                            </tr>
+                            </thead >
+                            <tbody id="all_instructors">
+                            
+                            
+                            
+                            
+                            </tbody>
+                            </table>
+                            </div>
+                            </div>
+                            
+                            
+                            <script src="../frontend/js/admin_instructor.js">
+                            
+                            </script>
+                        
                         
                         </div>
 
                     </div>
                 </div>
-            </div>
-        </div>
+        <!-- END PAGE CONTAINER-->
 
     </div>
 
+    <script src="./js/Course.js"></script>
     <!-- <script>
-        $(document).ready(function(){
-         $('#users_table').DataTable({
-             "processing": true,
-             "serverSide": true,
-             "ajax":{
-                 "url":"/get_users_data/get_user",
-                 "type":"GET",
-                 "dataSrc":"data"
- 
-             },
-             data:data,
-             columns:[
-                 {"data": "User_Name"},
-                 {"data": "Email"},
-                 {"data":"Status"}
-             ]
- 
-         })
-        })
-     </script>  -->
-
-     <script>
-        $.get('http://localhost:9999/get_users_data/get_user',function(data,status){
-            console.log(data)
-
-            $(document).ready(function(){
-                $.noConflict();
-                var table = $('#users_table').DataTable({
-                    data:data,
-                    columns:[
-                        { data : 'userName',title:'User_Name'},
-                        { data : 'email',title:'Email'},
-                        { data : 'role',title:'Role'},
-                    ],
-                    responsive: true
-                })
-
-            })
-        })
-
-     </script>
-
-
-    <!--<script src="js/user.js"></script>-->
+        function fun(){
+            let serviceArr=[];
+            if(localStorage.getItem('services')!=null)
+                serviceArr=JSON.parse(localStorage.getItem('services'));
+            var serviceName=document.getElementById("service").value;
+            var serviceDescription=document.getElementById("desc").value;
+            var ob={
+                serviceName:serviceName,
+                serviceDescription:serviceDescription,
+            }
+            serviceArr.push(ob);
+            
+            // var arr = [{name:"heelo", description:"this is"}]
+            alert('ADDED SERVICE');
+            // for(let i = 0; i < arr.length; i++){
+            // }
+            window.localStorage.setItem('services',JSON.stringify(serviceArr));
+            
+            
+         
+        }
+        window.onload=function(){
+            let arr2=[];
+if(localStorage.getItem('services')) arr2=JSON.parse(localStorage.getItem('services'))
+for(let {serviceName,serviceDescription} of arr2)
+{
+    // console.log(arr2)
+  document.querySelector('#adding').innerHTML+=`<div class="col-lg-6">
+                                        <div class="au-card m-b-30">
+                                            <div class="au-card-inner">
+                                                <h3 class="title-2 m-b-40">${serviceName}</h3>
+                                                <p class="card-text">${serviceDescription}</p>
+                                            </div>
+                                        </div>`
+}
+        }
+    </script> -->
+    <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
     <script src="vendor/bootstrap-4.1/popper.min.js"></script>
@@ -300,9 +323,31 @@
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
     <script src="vendor/select2/select2.min.js">
     </script>
+    <script>
+        $.get('http://localhost:9999/get_instructors_data/get_instructor',function(data,status){
+            console.log(data)
+
+            $(document).ready(function(){
+                $.noConflict();
+                var table = $('#instructor_table').DataTable({
+                    data:data,
+                    columns:[
+                        { data : 'FullName',title:'FullName'},
+                        { data : 'Email',title:'Email'},
+                        { data : 'Message',title: 'Message'},
+                        { data : 'Status',title:'Status'},
+
+                    ],
+                    responsive: true
+                })
+
+            })
+        })
+
+     </script>
 
     <!-- Main JS-->
-    <script src="js/main.js"></script>
+    <script src="js/mainn.js"></script>
 
 </body>
 

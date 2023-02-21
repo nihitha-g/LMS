@@ -17,6 +17,8 @@ $(document).ready(function() {
            
     $('#course-data').append(`<h1>${courseData.course_name}</h1>`);
     $('#course-data').append(`<p>${courseData.course_description}</p>`);
+   
+
     $('#course-data').append(`<p>INSTRUCTOR EMAIL : ${courseData.Instrutor_Email}</p>`);
     console.log(courseData.sections)
     // Loop through the sections and modules to add them to the HTML
@@ -45,6 +47,8 @@ $(document).ready(function() {
               <span class="close-button" onclick="closeVideo()">&times;</span>
               <div id="video-container"></div>
               <button class="quiz-button" onclick="showQuiz('${module.quiz.question}')">Take Quiz</button>
+             
+         
             </div>
           </div>    
 
@@ -70,7 +74,7 @@ $(document).ready(function() {
           <label for="d">${module.quiz.Options[3]}</label><br><br>
         
           <button id="submit" class="submit" onclick="checkAnswer('${module.quiz.question}', '${module.quiz.CorrectOption}','${courseData.course_name}','${module.module_name}')">Submit Answer</button>
-         
+          <button id="sub" class="sub" onclick="closequiz('${module.quiz.question}')">Close</button>
         </div>                      
           </div>        
           </div>             

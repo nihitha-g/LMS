@@ -48,6 +48,9 @@
 .btn.btn-secondary {
     color: #FFFFFF;
 }
+.instructorButton{
+    margin-right: 100px;
+}
 
 .btn-square {
     width: 38px;

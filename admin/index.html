@@ -73,22 +73,19 @@
                             <a href="user.html">
                                 <i class="fas fa-table"></i>Users</a>
                         </li>
+                     /
                         <li>
-                            <a href="service.html">
-                                <i class="fas fa-chart-bar"></i>Instructors</a>
-                        </li>
-                        <li>
-                            <a href="services.html">
+                            <a href="ins_request.html">
                                 <i class="far fa-check-square"></i>Instructors_requests</a>
                         </li>
                       
                         
                         <li>
-                            <a href="form.html">
+                            <a href="courses.html">
                                 <i class="fas fa-table"></i>Courses</a>
                         </li>
                         <li>
-                            <a href="destination.html">
+                            <a href="queries.html">
                                 <i class="far fa-check-square"></i>Queries</a>
                         </li>
                     </ul>
@@ -118,19 +115,15 @@
                         </li>
 
                         <li>
-                            <a href="service.html">
-                                <i class="fas fa-chart-bar"></i>Instructors</a>
-                        </li>
-                        <li>
-                            <a href="services.html">
+                            <a href="ins_request.html">
                                 <i class="far fa-check-square"></i>Instructors_requests</a>
                         </li>
                         <li>
-                            <a href="form.html">
+                            <a href="courses.html">
                                 <i class="fas fa-table"></i>Courses</a>
                         </li>
                         <li>
-                            <a href="destination.html">
+                            <a href="queries.html">
                                 <i class="far fa-check-square"></i>Queries</a>
                         </li>
                     </ul>
@@ -194,7 +187,7 @@
                                                 </div> -->
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="../frontend/index.html">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
@@ -221,7 +214,25 @@
                                             </div>
                                             <div class="text">
                                                 <h2 id="usercount"></h2>
-                                                <span>USERS</span>
+                                                <span>USERS</spanE>
+                                            </div>
+                                        </div>
+                                        <div class="overview-chart">
+                                            <!-- <canvas id="widgetChart1"></canvas> -->
+                                        </div>
+                                    </div></a>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="overview-item overview-item--c1" style="height: 80%;">
+                                    <a href="user.html"><div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="icon">
+                                                <i class="zmdi zmdi-account-o"></i>
+                                            </div>
+                                            <div class="text">
+                                                <h2 id="inscount"></h2>
+                                                <span>INSTRUCTORS</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -232,13 +243,13 @@
                             </div>
                             <div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c2" style="height: 80%;">
-                                    <a href="destination.html"><div class="overview__inner">
+                                    <a href="courses.html"><div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="icon">
                                                 <i class="zmdi zmdi-shopping-cart"></i>
                                             </div>
                                             <div class="text">
-                                                <h2 id="courseCount">12</h2>
+                                                <h2 id="courseCount"></h2>
                                                 <span>Courses</span>
                                             </div>
                                         </div>
@@ -248,7 +259,7 @@
                                     </div></a>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-3">
+                            <!-- <div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c3" style="height: 80%;">
                                     <a href="service.html"><div class="overview__inner">
                                         <div class="overview-box clearfix">
@@ -261,14 +272,14 @@
                                             </div>
                                         </div>
                                         <div class="overview-chart">
-                                            <!-- <canvas id="widgetChart2"></canvas> -->
-                                        </div>
+                                            <canvas id="widgetChart2"></canvas> -->
+                                        <!-- </div>
                                     </div></a>
                                 </div>
-                            </div>
+                            </div> --> 
                             <div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c4" style="height: 80%;">
-                                    <a href="#"><div class="overview__inner">
+                                    <a href="queries.html"><div class="overview__inner">
                                         <div class="overview-box clearfix">
                                             <div class="icon">
                                                 <i class="zmdi zmdi-calendar-note"></i>
@@ -358,7 +369,7 @@
                                                         
                                                     </tbody>
                                                 </table>
-                                            </div> --> -->
+                                            </div> --> 
                                             <!-- END DATA TABLE -->
                                         </div>
                                     </div>
@@ -405,17 +416,46 @@
     <script>
         $.ajax({
         type: "GET",
-        url: "http://localhost:9999/getusercount/get",
+        url: "http://localhost:9999/get_users_data/get_user",
+        
         success: function(result) {
-            $("#usercount").text(result.count);
+            const students = result.filter(obj => obj.role === "student");
+            const instructors = result.filter(obj => obj.role === "Instructor");
+            
+            //         const studentCount = students.length;
+            //         console.log(studentCount)
+            //     const instructorCount = instructors.length;
+            // console.log(result)
+           
+           
+            $("#usercount").text(students.length);
+        }
+        });
+        $.ajax({
+        type: "GET",
+        url: "http://localhost:9999/get_users_data/get_user",
+        
+        success: function(result) {
+            const students = result.filter(obj => obj.role === "student");
+            const instructors = result.filter(obj => obj.role === "Instructor");
+            
+            //         const studentCount = students.length;
+            //         console.log(studentCount)
+            //     const instructorCount = instructors.length;
+            // console.log(result)
+           
+           
+            $("#inscount").text(instructors.length);
         }
         });
 
         $.ajax({
-        type: "GET",
-        url: "http://localhost:9999/getcouseDetails/getcourse",
+        type: "POST",
+        url: "http://localhost:9999/quiz/course",
+        
         success: function(result) {
-            $("#courseCount").text(result.count);
+            console.log(result)
+            $("#courseCount").text(result.length);
         }
         });
 

@@ -78,21 +78,18 @@
                                 <i class="fas fa-table"></i>Users</a>
                         </li>
                        
+                      
                         <li>
-                            <a href="service.html">
-                                <i class="fas fa-chart-bar"></i>Instructors</a>
-                        </li>
-                        <li>
-                            <a href="services.html">
+                            <a href="ins_request.html">
                                 <i class="fas fa-chart-bar"></i>Instructors_requests</a>
                         </li>
                       
                         <li>
-                            <a href="form.html">
+                            <a href="courses.html">
                                 <i class="far fa-check-square"></i>Courses</a>
                         </li>
                         <li class="active">
-                            <a href="destination.html" >
+                            <a href="queries.html" >
                                 <i class="fas fa-table"></i>Queries</a>
                         </li>
                     </ul>
@@ -125,22 +122,19 @@
                                 <i class="fas fa-table"></i>Users</a>
                         </li>
                          
+                    
                         <li>
-                            <a href="service.html">
-                                <i class="fas fa-chart-bar"></i>Instructors</a>
-                        </li>
-                        <li>
-                            <a href="services.html">
+                            <a href="ins_request.html">
                                 <i class="fas fa-chart-bar"></i>Instructors_requests</a>
                         </li>
                         <li class="active">
-                            <a href="form.html">
+                            <a href="courses.html">
                                 <i class="fas fa-table"></i>Courses</a>
                         </li>
 
                         
                         <li>
-                            <a href="destination.html">
+                            <a href="queries.html">
                                 <i class="far fa-check-square"></i>Queries</a>
                         </li>
                     </ul>
@@ -311,7 +305,7 @@
                                                 </div> -->
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="../frontend/index.html">
                                                     <i class="zmdi zmdi-power"></i>Logout</a>
                                             </div>
                                         </div>
@@ -382,16 +376,17 @@
     <script src="js/main.js"></script>
 
     <script>
-        $.get('http://localhost:9999/get_course_data/get_course',function(data,status){
+        $.post('http://127.0.0.1:9999/quiz/course',function(data,status){
             console.log(data)
             $(document).ready(function(){
                 $.noConflict();
                 var table = $('#course_table').DataTable({
                     data:data,
                     columns:[
-                        { data : 'Course_Name',title:'Course_Name'},
-                        { data : 'Course_Description',title:'Course_Description'},
-                        { data : 'Course_Modules',title:'Course_Modules'},
+                        { data : 'course_name',title:'course_name'},
+                        { data : 'course_description',title:'course_description'},
+                        { data : 'Instrutor_Email',title:'Instrutor_Email'},
+                        {data: 'Students_Enrolled',title: 'Students_Enrolled'}
                                         ],
                     responsive: true
                 })

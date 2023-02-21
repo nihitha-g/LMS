@@ -20,6 +20,9 @@ const courseSchema = new mongoose.Schema({
   ],
   Instrutor_Email:{
     type: String
+  },
+  Students_Enrolled:{
+    type:[]
   }
 
 });
