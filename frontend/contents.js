@@ -5,7 +5,6 @@ $(document).ready(function() {
     
     // Make AJAX request to retrieve course data
     $.ajax({
-
       url: 'http://localhost:9999/' + coursename,
       type: 'POST',
       dataType: 'json',
@@ -95,14 +94,16 @@ function checkAnswer(quizId, correctAnswer) {
   var quiz = document.getElementById(quizId);
   var selectedAnswer = quiz.querySelector('input[name=question1]:checked').value;
   console.log(selectedAnswer)
-
+update={
+  courseName:courseName
+}
   if (selectedAnswer === correctAnswer) {
  
         $.ajax({
       url: 'http://localhost:9999/a/CourseComplete',
       type: 'POST',
-      dataType: 'json',
-
+      contentType: 'application/json',
+      data:update,
 success: function(data) {
 
 }
