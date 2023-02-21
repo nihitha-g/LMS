@@ -6,7 +6,7 @@ function queriesController(req,res){
         User_Name:req.body.name,
         Email:req.body.email,
         Subject:req.body.subject,
-        Message:req.body.description
+        Message:req.body.message
     })
     console.log(addQueriesData)
     console.log("something")

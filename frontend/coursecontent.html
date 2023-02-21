@@ -124,6 +124,16 @@
   margin-left: auto;
   font-size: 20px;
 }
+.sub{
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      margin-left: 120px;
+      cursor: pointer;
+
+    }
 
     .play-button, .quiz-button, .submit {
       background-color: #4CAF50;
@@ -298,15 +308,15 @@
          quiz.style.height="400px"
          quiz.style.width="300px"
     
-         var modal = document.getElementById("quiz-modal");
-    modal.style.display = "block";
+    //      var modal = document.getElementById("quiz-modal");
+    // modal.style.display = "block";
 }
         //  quiz.style.display="scrollbars"
         //  quiz.style.height="100px"
         //  quiz.style.width="100px"
 
 //   }
-  function closeQuiz() {
+  function closequiz(quizId) {
     var quiz = document.getElementById(quizId);
          quiz.style.display = "none";
   }

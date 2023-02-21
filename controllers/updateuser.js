@@ -70,14 +70,23 @@ UserCTRl.User.findOne({email:email},(err,user) =>{
       name: courseName,
       modules:[]
     });
-   
+    
 
     user.save((err) => {
       if (err) return res.status(500).send({ error: 'Error while enrolling in course' });
-      return res.status(200).send({ message: 'Successfully enrolld in course' });
+      CourseCTRl.Course.updateOne({course_name: req.body.coursesEnrolled},{$push:{Students_Enrolled:req.body.email}},(err,docs) =>{
+        if(err){
+            console.log(err)
+        }else{
+            console.log(req.body)
+            res.send("success")
+        }
+      })
+  
+    
     });
-
-})}
+  })
+}
 
 function getUserDetails(req,res){
     const email = req.body.Email;

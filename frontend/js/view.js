@@ -108,8 +108,6 @@ var selectedCourseIndex = retrieveSelectedCourse();
   //   }
   //   else{ctor("#enroll-button").innerHTML = "Enroll";
 // document.querySelector("#enroll-button").setAttribute("href", courses[selectedCourseIndex].enrollURL);
-const email =  window.localStorage.getItem("k")
-console.log(email)
 
 
 
@@ -127,11 +125,14 @@ console.log(email)
       console.log("hi")
     });
 
-
+    const email =  window.localStorage.getItem("k")
+    console.log(email)
+    
 a()
   function a(){
   
- 
+ if(email!=1)
+ {
   
 
 $.ajax({
@@ -199,7 +200,7 @@ $.ajax({
  
       
 })
-  }
+  
 // })
 
 
@@ -296,7 +297,13 @@ function handleView(){
 }
 
 
-
+  }
+  else
+ {
+    window.location.href="login (2).html"
+  }
+}
+ 
 
     // const enrollButton = document.getElementById("enroll-button");
     // if (isEnrolled) {

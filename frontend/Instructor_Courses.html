@@ -51,12 +51,12 @@
               </a>
               
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="Instructor_Quiz.html" aria-expanded="false" aria-controls="ui-basic">
                 <span class="menu-title">Add Quiz</span>
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-              </a>
+              </a> -->
               
             </li>
             <li class="nav-item">
@@ -194,10 +194,16 @@
      const email= "kukunuriabhiram.19.it@anits.edu.in"
       $.get('http://localhost:9999/course/'+ email,function(data,status){
           console.log(data)
+          var dat={
+            "course_name": data.course_name,
+            "course_description": data.course_description
+
+          }
+          console.log(data.course_name)
           $(document).ready(function(){
               // $.noConflict();
               var table = $('#table').DataTable({
-                  data:data,
+                  data:dat,
                   columns:[
                      [
                        { data : 'course_name',title:'course_name'},
