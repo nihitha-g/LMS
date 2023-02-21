@@ -71,20 +71,17 @@
                             <a href="user.html">
                                 <i class="fas fa-table"></i>Users</a>
                         </li>
+                       
                         <li>
-                            <a href="service.html">
-                                <i class="fas fa-chart-bar"></i>Instructors</a>
-                        </li>
-                        <li>
-                            <a href="services.html">
+                            <a href="ins_request.html">
                                 <i class="fas fa-chart-bar"></i>Instructors_requests</a>
                         </li>
-                        <li class="active">
-                            <a href="destination.html">
+                        <li >
+                            <a href="courses.html">
                                 <i class="far fa-check-square"></i>Courses</a>
                         </li>
-                        <li>
-                            <a href="form.html">
+                        <li  class="active">
+                            <a href="queries.html">
                                 <i class="fas fa-table"></i>Queries</a>
                         </li>
                       
@@ -114,20 +111,17 @@
                                 <i class="fas fa-table"></i>Users</a>
                         </li>
 
+                     
                         <li>
-                            <a href="service.html">
-                                <i class="fas fa-chart-bar"></i>Instructors</a>
-                        </li>
-                        <li>
-                            <a href="services.html">
+                            <a href="ins_request.html">
                                 <i class="fas fa-chart-bar"></i>Instructors_requests</a>
                         </li>
                         <li>
-                            <a href="form.html">
+                            <a href="courses.html">
                                 <i class="far fa-check-square"></i>Courses</a>
                       </li>
                           <li class="active">
-                            <a href="destination.html">
+                            <a href="queries.html">
                                 <i class="fas fa-table"></i>Queries</a>
                         </li>
                        
@@ -334,9 +328,9 @@ $.ajax({
                 var table = $('#queries_table').DataTable({
                     data:data,
                     columns:[
-                        { data : 'name',title:'Name'},
-                        { data : 'email',title:'Email'},
-                        { data : 'subject',title:'Subject'}
+                    { data : 'User_Name',title:'Name'},
+{ data : 'Email',title:'Email'},
+{ data : 'Subject',title:'Subject'}
                       
                     ],
                     responsive: true

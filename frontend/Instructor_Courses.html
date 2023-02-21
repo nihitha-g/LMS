@@ -13,7 +13,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    
+
       
 <!-- Layout styles -->
     <link rel="stylesheet" href="css/Instructor_style.css">
@@ -189,7 +189,29 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-   <script>
+
+    <script>
+     const email= "kukunuriabhiram.19.it@anits.edu.in"
+      $.get('http://localhost:9999/course/'+ email,function(data,status){
+          console.log(data)
+          $(document).ready(function(){
+              // $.noConflict();
+              var table = $('#table').DataTable({
+                  data:data,
+                  columns:[
+                     [
+                       { data : 'course_name',title:'course_name'},
+                      { data : 'course_description',title:'course_description'},
+                      // { data : 'Instrutor_Email',title:'Instrutor_Email'},
+                                     ] ],
+                  responsive: true
+              })
+
+          })
+      })
+
+   </script>
+   <!-- <script>
     $.get('http://localhost:9999/course/kukunuriabhiram.19.it@anits.edu.in',function(data,status){
             console.log(data)
             // $.noConflict();
@@ -217,7 +239,7 @@
         //     $("#courseCount").text(result.count);
         // }
         // });
-   </script>
+   </script> -->
     <!-- <script src="./js/instructorA.js"></script> -->
   </body>
 </html>

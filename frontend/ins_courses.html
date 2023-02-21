@@ -259,23 +259,42 @@
      </script>  -->
 
      <script>
-        $.get('http://localhost:9999/get_users_data/get_user',function(data,status){
-            console.log(data)
+         const email= "kukunuriabhiram.19.it@anits.edu.in"
+      $.get('http://localhost:9999/course/'+ email,function(data,status){
+          console.log(data)
+          $(document).ready(function(){
+              // $.noConflict();
+              var table = $('#users_table').DataTable({
+                  data:data,
+                  columns:[
+                     [
+                       { data : 'course_name',title:'course_name'},
+                      { data : 'course_description',title:'course_description'},
+                      // { data : 'Instrutor_Email',title:'Instrutor_Email'},
+                                     ] ],
+                  responsive: true
+              })
 
-            $(document).ready(function(){
-                $.noConflict();
-                var table = $('#users_table').DataTable({
-                    data:data,
-                    columns:[
-                        { data : 'userName',title:'User_Name'},
-                        { data : 'email',title:'Email'},
-                        { data : 'role',title:'Role'},
-                    ],
-                    responsive: true
-                })
+          })
+      })
 
-            })
-        })
+        // $.get('http://localhost:9999/get_users_data/get_user',function(data,status){
+        //     console.log(data)
+
+        //     $(document).ready(function(){
+        //         $.noConflict();
+        //         var table = $('#users_table').DataTable({
+        //             data:data,
+        //             columns:[
+        //                 { data : 'userName',title:'User_Name'},
+        //                 { data : 'email',title:'Email'},
+        //                 { data : 'role',title:'Role'},
+        //             ],
+        //             responsive: true
+        //         })
+
+        //     })
+        // })
 
      </script>
 

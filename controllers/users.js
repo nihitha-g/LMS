@@ -73,7 +73,7 @@ function userProfileDetails(req, res){
 
 
 function getusercount(req,res){
-    userModelCtrl.userModel.countDocuments({},(err,count) =>{
+    userModelCtrl.User.countDocuments({},(err,count) =>{
         if (err) return res.send(err);
     return res.send({ count });
     })

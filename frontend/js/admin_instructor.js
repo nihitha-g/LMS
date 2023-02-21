@@ -4,14 +4,16 @@ get_req()
 function get_req(){ return new Promise((res, rej) => {
     $.get("http://127.0.0.1:9999/a", function(data, status){
         res(console.log(data));
+        count=1
         for(let i=0; i<data.length; i++){
-            if(data[i].isInstructor!=null){
 
+            if(data[i].isInstructor!=null && data[i].isInstructor=='pending'){
+ 
             
             document.querySelector('#all_instructors').innerHTML+=`<tr class="inner-box">
             <th scope="row">
             <div class="event-date">
-            <span>${i}</span>
+            <span>${count}</span>
             </div>
              </th>
             
@@ -47,7 +49,9 @@ function get_req(){ return new Promise((res, rej) => {
             </td>
             </tr>
             </div>`
+            count=count+1
         }}
+        
             console.log("onedone")
         //     abtn = document.getElementById("accept-button"+email)
         //     rbtn = document.getElementById("reject-button"+email)
