@@ -1,3 +1,7 @@
+localStorage.setItem('links', JSON.stringify([]));
+localStorage.setItem('quiz', JSON.stringify([]));
+// if (localStorage.getItem('k')!=1){
+
 saveAndNext = $("#next")
 
 // saveAndNext.addEventListener("click", nextbtn())
@@ -5,22 +9,12 @@ saveAndNext = $("#next")
 saveAndNext.click(nextbtn)
 function nextbtn() {
   console.log("hey");
-  const qui = [{
-    op1: $("#op1").val(),
-    op2: $("#op2").val(),
-    op3: $("#op3").val(),
-    op4: $("#op4").val(),
-  }]
-  const quizz = {
-    question: $("#question").val(),
-    Options : qui,
-    cor: $("#co").val(),
+  var quize = JSON.parse(localStorage.getItem('quiz'));
 
-  }
   const data = {
     module_name: $("#module-name").val(),
     youtube: $("#youtube").val(),
-    quiz: quizz,
+    quiz: quize,
   };
   var store = JSON.parse(localStorage.getItem("links"));
   store.push(data);
@@ -75,6 +69,60 @@ function addCourse() {
   localStorage.setItem("links", JSON.stringify([]));
 }
 
+
+document.getElementById('add-question').addEventListener('click', function() {
+  // get the values of the form inputs
+  let question = document.getElementById('question').value;
+  let option1 = document.getElementById('option1').value;
+  let option2 = document.getElementById('option2').value;
+  let option3 = document.getElementById('option3').value;
+  let option4 = document.getElementById('option4').value;
+  let correctOption = document.getElementById('correct-option').value;
+  const qui = [{
+    op1: option1,
+    op2: option2,
+    op3: option3,
+    op4: option4
+  }]
+  const quizz = {
+    question: question,
+    Options : qui,
+    cor: correctOption
+
+  }
+  // create a new question object
+  // let newQuestion = {
+  //   question: question,
+  //   options: [option1, option2, option3, option4],
+  //   correctOption: correctOption
+  // };
+  console.log(quizz)
+  var quiz = JSON.parse(localStorage.getItem('quiz'));
+  // push the new question object into the questions array
+  quiz.push(quizz);
+  console.log( JSON.stringify(quiz))
+  localStorage.setItem('quiz', JSON.stringify(quiz));
+  
+
+  alert("Successfully added")
+  // // store the updated questions array in local storage
+  // localStorage.setItem('quiz', JSON.stringify(quiz));
+  
+  // clear the form inputs
+  document.getElementById('question').value = '';
+  document.getElementById('option1').value = '';
+  document.getElementById('option2').value = '';
+  document.getElementById('option3').value = '';
+  document.getElementById('option4').value = '';
+});
+
+
+
+
+
+
+
+
 function addSection() {
   var course_name = localStorage.getItem('courseName');
   var section_name = $("#section-name").val();
@@ -92,6 +140,7 @@ function addSection() {
     url: "http://localhost:9999/quiz/section",
     success: (result) => {
       alert("sucessfully added");
+   
     },
     error: (result) => {
       alert(result);

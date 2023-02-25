@@ -13,7 +13,8 @@ function get_req(){
      console.log(data);
       for(let i=0; i<data.length; i++){
         document.querySelector('#courseslist').innerHTML+=`
-       <div class="card">
+		
+       <div class="card";>
 	<div class="card-img"  >
 	<img src="/frontend/img/cat-1.jpg" alt="Image 1">
 		<div class="overlay">

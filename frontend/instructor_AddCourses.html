@@ -129,28 +129,33 @@
                         <label for="youtubeLink">YouTube Link:</label>
                         <input type="text" id="youtube" name="youtubeLink[]"><br><br>
                         
-                        <label for="quizQuestion">Quiz Question:</label>
-                        <input type="text" id="question" name="quizQuestion[]"><br><br>
-                        
-                        <label for="option1">Option 1:</label>
-                        <input type="text" id="op1" name="option1[]"><br><br>
-                        
-                        <label for="option2">Option 2:</label>
-                        <input type="text" id="op2" name="option2[]"><br><br>
-                        
-                        <label for="option3">Option 3:</label>
-                        <input type="text" id="op3" name="option3[]"><br><br>
-                        
-                        <label for="option4">Option 4:</label>
-                        <input type="text" id="op4" name="option4[]"><br><br>
-                        
-                        <label for="correctOption">Correct Option:</label>
-                        <select id="co" name="correctOption[]">
-                          <option value="1">Option 1</option>
-                          <option value="2">Option 2</option>
-                          <option value="3">Option 3</option>
-                          <option value="4">Option 4</option>
-                        </select><br><br>
+                        <form id="quiz-form">
+                          <label for="question">Question:</label>
+                          <input type="text" id="question" name="question">
+                          <br>
+                          <label for="option1">Option 1:</label>
+                          <input type="text" id="option1" name="option1">
+                          <br>
+                          <label for="option2">Option 2:</label>
+                          <input type="text" id="option2" name="option2">
+                          <br>
+                          <label for="option3">Option 3:</label>
+                          <input type="text" id="option3" name="option3">
+                          <br>
+                          <label for="option4">Option 4:</label>
+                          <input type="text" id="option4" name="option4">
+                          <br>
+                          <label for="correct-option">Correct Option:</label>
+                          <select id="correct-option" name="correct-option">
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                            <option value="4">Option 4</option>
+                          </select>
+                          <br>
+                          <button type="button" id="add-question">Add Question</button>
+                          <button type="submit" id="submit-quiz">Submit Quiz</button>
+                        </form>
                       </div>
                     </div>
                     

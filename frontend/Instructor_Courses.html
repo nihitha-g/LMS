@@ -158,10 +158,70 @@
               </div>
             </div>
           </div> -->
-          <div class="row">
+          <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="event-schedule-area-two bg-color pad100">
+                        <div class="container">
+                        <div class="row">
+                        <div class="col-lg-12">
+                        <div class="section-title text-center">
+                        <div class="title-text">
+                        <h2>COURSES</h2>
+                        </div>
+                        <p>
+                        Following are the list of <br />
+                        Courses
+                        </p>
+                        </div>
+                        </div>
+                        
+                        </div>
+                        
+                        <div class="row">
+                        <div class="col-lg-12">
+                        <ul class="nav custom-tab" id="myTab" role="tablist">
+                        <li class="nav-item">
+                        <a class="nav-link active show" id="home-taThursday" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"></a>
+                        </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade active show" id="home" role="tabpanel">
+                        <div class="table-responsive">
+                        <table class="table">
+                        <thead>
+                        <tr>
+                        <th scope="col">SR No</th>
+                        
+                        <th scope="col">Course Name</th>
+                        <th scope="col">Course Description</th>
+                        <th scope="col">Students Enrolled</th>
+                        </tr>
+                        </thead >
+                        <tbody id="all_instructors">
+                        
+                        
+                        
+                        
+                        </tbody>
+                        </table>
+                        </div>
+                        </div>
+                        
+                        
+                        <script src="../frontend/js/ins.js">
+                        
+                        </script>
+                    
+                    
+                    </div>
+
+                </div>
+            </div>
+          <!-- <div class="row">
             <div class="col-md-12">
                 <!-- DATA TABLE -->
-                <h3 class="title-5 m-b-35">Course table</h3>
+                <!-- <h3 class="title-5 m-b-35">Course table</h3>
                 <div class="table-data__tool">
                     
                     
@@ -171,8 +231,8 @@
                     </table>
                 </div>
                 <!-- END DATA TABLE -->
-            </div>
-        </div>
+            <!-- </div>
+        </div> --> 
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <!-- <footer class="footer">
@@ -190,8 +250,8 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
 
-    <script>
-     const email= "kukunuriabhiram.19.it@anits.edu.in"
+    <!-- <script>
+     const email= localStorage.getItem('k')
       $.get('http://localhost:9999/course/'+ email,function(data,status){
           console.log(data)
           var dat={
@@ -216,7 +276,7 @@
           })
       })
 
-   </script>
+   </script> -->
    <!-- <script>
     $.get('http://localhost:9999/course/kukunuriabhiram.19.it@anits.edu.in',function(data,status){
             console.log(data)

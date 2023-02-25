@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // Get course ID from URL or from another source
-    var coursename = "Introduction to Programming";
-    // var coursename = localStorage.getItem("selectedCourseIndex")
+    // var coursename = "Introduction to Programming";
+    var coursename = localStorage.getItem("selectedCourseIndex")
     
     // Make AJAX request to retrieve course data
     $.ajax({

@@ -30,6 +30,12 @@ $.get("http://127.0.0.1:9999/userProfile/"+user_email, function(data, status){
     // let add1 = document.getElementById("adress")
     // add1.innerHTML=data[0].address
     let Courses_enrolled = document.getElementById("courses")
-    Courses_enrolled.innerHTML = data[0].coursesEnrolled
-
+    for (i=0;i<data[0].coursesEnrolled.length;i++){
+    Courses_enrolled.innerHTML = Courses_enrolled.innerHTML+"::"+data[0].coursesEnrolled[i].name}
+    
+    for (i=0;i<data[0].coursesEnrolled.length;i++){
+    document.querySelector('#progress').innerHTML+=`<small>${data[0].coursesEnrolled[i].name}</small>
+    <div class="progress mb-3" style="height: 5px">
+    <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>`}
 })

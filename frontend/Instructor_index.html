@@ -30,7 +30,7 @@
               <a href="#" class="nav-link">
                 
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">Welcome Instructor...!</span>
+                  <span class="font-weight-bold mb-2">Welcome Instructor</span>
                   <span class="text-secondary text-small">Manage your courses Here</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
@@ -50,12 +50,7 @@
               </a>
               
             </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="Instructor_Quiz.html" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Add Quiz</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-              </a>
+           
               
             </li>
             <li class="nav-item">
@@ -64,6 +59,12 @@
                 <i class="mdi mdi-contacts menu-icon"></i>
               </a>
             </li>
+             <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="../frontend/index.html" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">GO TO HOME</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+              </a>
             <!-- <li class="nav-item">
               <a class="nav-link" href="">
                 <span class="menu-title">STUDENTS</span>
@@ -91,7 +92,7 @@
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
                   <li class="breadcrumb-item active" aria-current="page">
-                    <span><a href="./index.html" style="background-color:beige;">LOGOUT</a></span> <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                    <span><a class="btn btn-secondary" href="./index.html" style="background-color:rgb(67, 214, 219);">LOGOUT</a></span> <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
                   </li>
                 </ul>
               </nav>
@@ -114,7 +115,7 @@
                     <img src="../frontend/img/circle.svg" class="card-img-absolute" alt="circle-image" />
                     <h4 class="font-weight-normal mb-3">No of Students <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5" id="usercount">5</h2>
+                    <h2 class="mb-5" id="usercount"></h2>
                     <h6 class="card-text"></h6>
                   </div>
                 </div>
@@ -125,7 +126,7 @@
                     <img src="../frontend/img/circle.svg" class="card-img-absolute" alt="circle-image" />
                     <h4 class="font-weight-normal mb-3">Messages <i class="mdi mdi-diamond mdi-24px float-right"></i>
                     </h4>
-                    <h2 class="mb-5" id="countqueries">5</h2>
+                    <h2 class="mb-5" id="countqueries">1</h2>
                     <h6 class="card-text"></h6>
                   </div>
                 </div>
@@ -240,12 +241,26 @@
             })
         }) -->
         <script>
-
+        email=localStorage.getItem("k")
         $.ajax({
         type: "GET",
-        url: "http://localhost:9999/getcouseDetails/getcourse",
+        url: "http://localhost:9999/course/"+email,
         success: function(result) {
-            $("#courseCount").text(result.count);
+          
+            $("#courseCount").text(result.length);
+        }
+        });
+
+
+        email=localStorage.getItem("k")
+        $.ajax({
+        type: "GET",
+        url: "http://localhost:9999/course/"+email,
+        success: function(result) {
+             console.log(result[0].Students_Enrolled)
+
+          
+            $("#usercount").text(result[0].Students_Enrolled.length);
         }
         });
    </script>

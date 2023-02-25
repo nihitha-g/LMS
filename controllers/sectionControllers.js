@@ -79,7 +79,7 @@ catch (e) {
 async function getInsCourse(req,res){
    const insName = req.params.Instrutor_Email;
   try{
-  let data=await courseCTRL.Course.findOne({Instrutor_Email : insName })
+  let data=await courseCTRL.Course.find({Instrutor_Email : insName })
     .populate({
       path: "sections",
       populate: {
@@ -106,59 +106,75 @@ catch (e) {
 }
 
 
+
 async function addSection(req, res) {
-  console.log("its the body",req.body);
+  console.log("its the body", req.body);
+  qui = []
+
   let addSectionName = moduleCTRl.Section({
     section_name: req.body.section_name,
     modules: [],
   });
+
   let add_section = await addSectionName.save();
   let section_id = await moduleCTRl.Section.findOne(
     { section_name: req.body.section_name },
     { _id: 1 }
   );
-  console.log("hii",section_id)
+  console.log("hii", section_id);
+
   let add_section_course = await courseCTRL.Course.updateOne(
     { course_name: req.body.course_name },
     { $push: { sections: section_id } }
   );
-  console.log(add_section_course)
-  p = JSON.parse(req.body.modules)
-  console.log(p[0].quiz.Options)
+  console.log(add_section_course);
 
-  for (var i = 0; i < p.length; i++) {
-    currentModule = {}; //for current module
-    options = [p[i].quiz.Options[0].op1,p[i].quiz.Options[0].op2,p[i].quiz.Options[0].op3,p[i].quiz.Options[0].op4]//for options array
-    currentQuiz = {}//contains current quiz
-    currentModule["module_name"] = p[i].module_name;
-    currentModule["youtube_link"] = p[i].youtube;
-    currentQuiz['question'] = p[i].quiz.question
-    currentQuiz["Options"] = options
-    currentQuiz["CorrectOption"] = p[i].quiz.cor
-     // for current quiz
-     console.log("sds",currentQuiz.Options)
-    // currentModule["CorrectOption"] = p[i].CorrectOption
-    let addQuiz = quizCTRl.Quiz(currentQuiz);
-    let saved_quiz = await addQuiz.save();
-    console.log(".............",i,"--------------------------------")
-    console.log("begin", saved_quiz);
-    console.log("id of quiz", saved_quiz._id);
-    console.log("question",p[i].quiz.question)
-    // let found_quiz = await quizCTRl.Quiz.findOne(
-    //   { question: p[i].quiz.question },
-    //   { _id: 1 }
-    // );
-    // console.log("hii", found_quiz);
-    currentModule["quiz"] = saved_quiz._id;
-    // let current_section= await moduleCTRl.Section.findOne({section_name: req.body.section_name})
-    let add_update = await moduleCTRl.Section.updateOne( 
+  let modules = JSON.parse(req.body.modules)
+  
+
+  for (let i = 0; i < modules.length; i++) {
+    let currentModule = {
+      module_name: modules[i].module_name,
+      youtube_link: modules[i].youtube_link,
+      quiz: []
+    };
+    console.log(modules[i].quiz.length)
+
+    for (let j = 0; j < modules[i].quiz.length; j++) {
+      let options = [modules[i].quiz[j].Options[0].op1,
+        modules[i].quiz[j].Options[0].op2,
+        modules[i].quiz[j].Options[0].op3,
+        modules[i].quiz[j].Options[0].op4
+      ];
+      // console.log(options)
+
+      let currentQuiz = {
+        question: modules[i].quiz[j].question,
+        Options: options,
+        CorrectOption: modules[i].quiz[j].cor
+      };
+      // console.log(currentQuiz)
+       qui.push(currentQuiz)
+       console.log(qui)
+
+    }
+    console.log(qui)
+      let addQuiz = quizCTRl.Quiz({
+        quize: qui
+      });;
+      let saved_quiz = await addQuiz.save();
+      console.log("Saved quiz:", saved_quiz);
+
+      currentModule.quiz.push(saved_quiz._id);
+    
+    let add_update = await moduleCTRl.Section.updateOne(
       { section_name: req.body.section_name },
       { $push: { modules: currentModule } }
     );
   }
+
   res.send("worked");
 }
-
 module.exports = { addSection, getSection,getCourse,getInsCourse };
 
 // function addModule(req, res){
