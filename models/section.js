@@ -18,11 +18,11 @@ const sectionSchema = new mongoose.Schema({
           type: String,
           required: true
         },
-        quiz: 
+        quiz: [
           {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Quiz'
-          },
+          }],
       }
     ]
   });
