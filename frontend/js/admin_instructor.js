@@ -1,4 +1,4 @@
-get_req()
+    get_req()
 
 
 function get_req(){ return new Promise((res, rej) => {
@@ -31,8 +31,8 @@ function get_req(){ return new Promise((res, rej) => {
             <span id="${data[i].email}">${data[i].email}</span>
             </div>
             <div class="categories">
-            <img src="../" alt="">
-            <a href="../${data[i].File}">Resume</a>
+            
+            <img src="${data[i].File}">
             </div>
             </div>
             </td>
