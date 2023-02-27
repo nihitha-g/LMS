@@ -84,7 +84,7 @@ $(document).ready(function() {
               
                 ${i > 0 ? `<button class="prev-button" onclick="showQuizQuestion('${module.module_name}', ${i-1})">Previous</button>` : ''}
                 ${i < module.quiz[0].quize.length-1 ? `<button class="next-button" onclick="showQuizQuestion('${module.module_name}', ${i+1})">Next</button>` : ''}
-                ${i === module.quiz[0].quize.length-1 ? `<button class="submit-button" id="submit" onclick="submitQuiz('${module.module_name}', ${correctOptions})">Submit</button>` : ''}
+                ${i === module.quiz[0].quize.length-1 ? `<button class="submit-button" id="submit" onclick="submitQuiz('${module.module_name}', [${correctOptions}])">Submit</button>` : ''}
                
               </div>
             </div>
@@ -108,12 +108,12 @@ $(document).ready(function() {
     }
   ;
   }  });
-
+ 
 })
 
 function submitQuiz(quizId, correctOptions) {
   var module = document.getElementById(quizId); 
-
+   console.log(correctOptions)
   var length = $('.quizc').length;
   const selectedOptions = [];
   const optionElements = [];
@@ -143,15 +143,41 @@ function submitQuiz(quizId, correctOptions) {
   // Check the user's selected options against the correct answers
   let numCorrect = 0;
   for (let i = 0; i < selectedOptions.length; i++) {
-    if (selectedOptions[i] === correctOptions[i]) {
+    console.log(correctOptions[i])
+    console.log(selectedOptions[i])
+    if (selectedOptions[i] == correctOptions[i]) {
       numCorrect++;
+      console.log(numCorrect)
     }
   }
+  console.log(numCorrect)
 
   // Show the user's score
   const score = (numCorrect / selectedOptions.length) * 100;
   alert(`You scored ${score}% on the quiz.`);
+  if (score ==100){
+    update={
+  email:localStorage.getItem('k'),
+ course_name :localStorage.getItem("selectedCourseIndex"),
+  module:quizId,
 }
+console.log(update)
+ update =JSON.stringify(update)
+        $.ajax({
+      url: 'http://localhost:9999/a/CourseComplete',
+      type: 'POST',
+      contentType: 'application/json',
+      data:update,
+success: function(data) {
+  console.log(data);
+},error: function(err) {
+alert(err);   }})
+ 
+
+
+  } 
+  }
+
 
 
 

@@ -157,6 +157,7 @@ function courseCompletion(req,res){
                 // console.log(courses)
                 for(var i=0; i<courses.length; i++){
                     if(courses[i].name === req.body.course_name){
+                        console.log(courses[i].name)
                         for(var j=0; j < courses[i].modules.length; j++){
                             if(courses[i].modules[j] === req.body.module){
                                 var flag = 1;
