@@ -4,26 +4,24 @@ const quizCTRl = require("../models/quize");
 // const { application } = require('express')
 
 
-async function getCourse(req,res){
-  console.log("hi")
-  // const courseName = req.body.course_name;
-  try{
-  let data=await courseCTRL.Course.find()
+async function getCourse(req, res) {
+  try {
+    const data = await courseCTRL.Course.find({})
     .populate({
-      path: "sections",
+      path: 'sections',
       populate: {
-
-        path: "modules.quiz",
-        model: "Quiz",
+        path: 'modules.quiz',
+        model: 'Quiz',
       },
     })
+      .exec();
+
     res.send(data);
-}
-catch (e) {
+  } catch (e) {
     console.log(e);
+  }
 }
 
-}
 // async function get(req, res) {
 //   console.log("hi")
 //   // const courseName = req.body.course_name;
@@ -109,7 +107,7 @@ catch (e) {
 
 async function addSection(req, res) {
   console.log("its the body", req.body);
-  qui = []
+  
 
   let addSectionName = moduleCTRl.Section({
     section_name: req.body.section_name,
@@ -133,6 +131,7 @@ async function addSection(req, res) {
   
 
   for (let i = 0; i < modules.length; i++) {
+    qui=[]
     let currentModule = {
       module_name: modules[i].module_name,
       youtube_link: modules[i].youtube_link,

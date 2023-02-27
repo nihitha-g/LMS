@@ -135,15 +135,31 @@
 
     }
 
-    .play-button, .quiz-button, .submit {
+    .play-button, .quiz-button, .submit,.close-button ,.next-button,.prev-button,.submit-button{
       background-color: #4CAF50;
       color: white;
       border: none;
       border-radius: 5px;
       padding: 10px;
+      
       margin-right: 10px;
       cursor: pointer;
 
+    }
+    .submit-button{
+      position: relative;
+      margin-left: 220px;
+      top:-40px;
+      
+
+    }
+    .close-button{
+      position: relative;
+      width:60px;
+      top:-300px;
+      margin-top: 1px;
+      margin-left: 220px;
+       
     }
     /* Style for the video element */
     video {
@@ -195,13 +211,13 @@
     border: 1px solid #888;
     width: 80%;
   }
-
+/*   
   .close-button {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
+  } */
 
   .close-button:hover,
   .close-button:focus {
@@ -303,6 +319,7 @@
 
         function showQuiz(quizId) {
        var quiz = document.getElementById(quizId);
+       console.log(quiz)
          quiz.style.display = "block";
          quiz.style.marginRight="2000px"
          quiz.style.height="400px"
@@ -311,12 +328,44 @@
     //      var modal = document.getElementById("quiz-modal");
     // modal.style.display = "block";
 }
+
+function showQuizQuestion(quizId, questionNumber) {
+  console.log(questionNumber);
+  // Hide all quiz questions
+  const quizQuestions = document.querySelectorAll(`#${quizId} .quiz-question`);
+
+  quizQuestions.forEach((question) => {
+    question.style.display = "none";
+  });
+
+  // Show the selected quiz question
+  const selectedQuestion = document.querySelector(`#${quizId} #quiz-question-${questionNumber}`);
+  console.log(selectedQuestion);
+  selectedQuestion.style.display = "block";
+}
+// function showQuizQuestion(questionNumber) {
+ 
+//   console.log(questionNumber)
+//   // Hide all quiz questions
+//   const quizQuestions = document.querySelectorAll('.quiz-question');
+
+//   quizQuestions.forEach(question => {
+//     question.style.display = 'none';
+//   });
+
+//   // Show the selected quiz question
+//   const selectedQuestion = document.querySelector(`#quiz-question-${questionNumber}`);
+//   console.log(selectedQuestion)
+//   selectedQuestion.style.display = 'block';
+// }
+
+
         //  quiz.style.display="scrollbars"
         //  quiz.style.height="100px"
         //  quiz.style.width="100px"
 
 //   }
-  function closequiz(quizId) {
+  function closeQuiz(quizId) {
     var quiz = document.getElementById(quizId);
          quiz.style.display = "none";
   }

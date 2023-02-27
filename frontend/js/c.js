@@ -29,6 +29,9 @@ function nextbtn() {
   
   // window.location.reload();
   alert("Successfully added module");
+
+  localStorage.setItem('quiz', JSON.stringify([]));
+  console.log(localStorage.getItem('quiz'))
 }
 sectionN = $("#sectionC")
 sectionN.click(sName);
@@ -70,14 +73,21 @@ function addCourse() {
 }
 
 
-document.getElementById('add-question').addEventListener('click', function() {
+ function addquestion() {
+ 
   // get the values of the form inputs
+  console.log("hi")
+  // var quiz = []
   let question = document.getElementById('question').value;
   let option1 = document.getElementById('option1').value;
   let option2 = document.getElementById('option2').value;
   let option3 = document.getElementById('option3').value;
   let option4 = document.getElementById('option4').value;
   let correctOption = document.getElementById('correct-option').value;
+  let quiz = JSON.parse(localStorage.getItem('quiz'));
+  if (!quiz) {
+    quiz = [];
+  }
   const qui = [{
     op1: option1,
     op2: option2,
@@ -97,7 +107,8 @@ document.getElementById('add-question').addEventListener('click', function() {
   //   correctOption: correctOption
   // };
   console.log(quizz)
-  var quiz = JSON.parse(localStorage.getItem('quiz'));
+  // var quiz = JSON.parse(localStorage.getItem('quiz'));
+  console.log(quiz)
   // push the new question object into the questions array
   quiz.push(quizz);
   console.log( JSON.stringify(quiz))
@@ -106,7 +117,7 @@ document.getElementById('add-question').addEventListener('click', function() {
 
   alert("Successfully added")
   // // store the updated questions array in local storage
-  // localStorage.setItem('quiz', JSON.stringify(quiz));
+
   
   // clear the form inputs
   document.getElementById('question').value = '';
@@ -114,7 +125,7 @@ document.getElementById('add-question').addEventListener('click', function() {
   document.getElementById('option2').value = '';
   document.getElementById('option3').value = '';
   document.getElementById('option4').value = '';
-});
+};
 
 
 
@@ -132,6 +143,7 @@ function addSection() {
     modules: localStorage.getItem("links"),
   };
   let sdat = JSON.stringify(sdata);
+  console.log(sdat)
   console.log("fff",sdata.modules);
   $.ajax({
     method: "POST",
@@ -140,6 +152,7 @@ function addSection() {
     url: "http://localhost:9999/quiz/section",
     success: (result) => {
       alert("sucessfully added");
+      window.location.reload()
    
     },
     error: (result) => {
