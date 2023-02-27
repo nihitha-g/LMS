@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 app.use(express.json())
 app.use(cors())
+const path = require('path')
 
 
 //routes
@@ -22,6 +23,7 @@ const courseRoutes = require("./routes/courseRoutes")
 const quizRoutes = require('./routes/quizRoutes')
 
 //instructors
+app.use(express.static(path.join(__dirname,'frontend')))
 app.use('/a',allUsersRoutes)
 
 //instructors

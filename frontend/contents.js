@@ -60,7 +60,11 @@ $(document).ready(function() {
               <div class="quizc">
                 <h3>Quiz: ${module.module_name}</h3>
         `
+        const correctOptions = [];
         for (let i = 0; i < module.quiz[0].quize.length; i++) {
+          correctOptions.push(module.quiz[0].quize[i].CorrectOption);
+          console.log(correctOptions)
+         
           moduleHtml += `
             <div class="quiz-question" id="quiz-question-${i}" style="display: ${i === 0 ? 'block' : 'none'};">
               <h4>Question ${i+1}: ${module.quiz[0].quize[i].question}</h4>
@@ -74,18 +78,19 @@ $(document).ready(function() {
                 <input type="radio" name="question${i+1}" value="4" id="${i+1}d">
                 <label for="${i+1}d">${module.quiz[0].quize[i].Options[3]}</label><br>
                 <button id="close-button" class="close-button" onclick="closeQuiz('${module.module_name}')">Close</button>
+                
               </div>
               <div class="quiz-buttons">
               
                 ${i > 0 ? `<button class="prev-button" onclick="showQuizQuestion('${module.module_name}', ${i-1})">Previous</button>` : ''}
                 ${i < module.quiz[0].quize.length-1 ? `<button class="next-button" onclick="showQuizQuestion('${module.module_name}', ${i+1})">Next</button>` : ''}
-                ${i === module.quiz[0].quize.length-1 ? `<button class="submit-button" id="submit" onclick="submitQuiz('${module.module_name}','${module.quiz[0].quize[i].CorrectOption}')">Submit</button>` : ''}
+                ${i === module.quiz[0].quize.length-1 ? `<button class="submit-button" id="submit" onclick="submitQuiz('${module.module_name}', ${correctOptions})">Submit</button>` : ''}
                
               </div>
             </div>
           `;
         }
-        console.log(${module.quiz[0].quize[i].CorrectOption})
+      console.log(correctOptions)
         
         moduleHtml += `
           </div>
@@ -106,36 +111,48 @@ $(document).ready(function() {
 
 })
 
-// document.getElementById("submit").addEventListener("click", function() {
- 
-//   window.location.href = "coursecontent.html";
-// });
-// Step 1
-var totalQuestions = 0;
-var correctAnswers = 0;
+function submitQuiz(quizId, correctOptions) {
+  var module = document.getElementById(quizId); 
 
-function submitQuiz(quizId,correctAnswer) {
-  var quiz = document.getElementById(quizId);
-  var selectedAnswer = quiz.querySelector('input[name="question"]:checked').value;
+  var length = $('.quizc').length;
+  const selectedOptions = [];
+  const optionElements = [];
 
-  // Step 2
-  if (selectedAnswer === correctAnswer) {
-    correctAnswers++;
+  // Get all the selected options for each question
+  for (let i = 1; i <= length; i++) {
+    const questionId = 'question' + i;
+    const options = module.querySelectorAll(`[name=${questionId}]`);
+    optionElements.push(options);
   }
+
+  for (let i = 0; i < optionElements.length; i++) {
+    for (let j = 0; j < optionElements[i].length; j++) {
+      if (optionElements[i][j].checked) {
+        selectedOptions.push(optionElements[i][j].value);
+        break;
+      }
+    }
+  }    
+
+  // If the user hasn't selected an option for every question, show an error message
+  if (selectedOptions.length !== length) {
+    alert("Please answer all questions before submitting.");
+    return;
+  }
+
+  // Check the user's selected options against the correct answers
+  let numCorrect = 0;
+  for (let i = 0; i < selectedOptions.length; i++) {
+    if (selectedOptions[i] === correctOptions[i]) {
+      numCorrect++;
+    }
+  }
+
+  // Show the user's score
+  const score = (numCorrect / selectedOptions.length) * 100;
+  alert(`You scored ${score}% on the quiz.`);
 }
 
-document.getElementById("submit").addEventListener("click", function() {
-  // Step 3
-  var questions = document.querySelectorAll('.quiz-question');
-  totalQuestions = questions.length;
-  questions.forEach(function(question) {
-    checkAnswer(question.id, question.dataset.answer);
-  });
-
-  // Step 4
-  alert(`You got ${correctAnswers} out of ${totalQuestions} correct!`);
-  window.location.href = "coursecontent.html";
-});
 
 
 // function checkAnswer(quizId, correctAnswer ,course_name,module) {
