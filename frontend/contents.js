@@ -29,7 +29,7 @@ $(document).ready(function() {
         <section class="section">
           <div class="section-header">
             <h2>${section.section_name}</h2>
- 
+           
           </div>
       `
       $('#course-data').append(sectionHtml);
@@ -48,7 +48,7 @@ $(document).ready(function() {
         
             <div id="video-modal" class="modal">
               <div class="modal-content">
-                <span class="close-button" onclick="closeVideo()">&times;</span>
+              <span class="close-button" onclick="closeVideo()">&times;</span>
                 <div id="video-container"></div>
                 <button class="quiz-button" onclick="showQuiz('${module.module_name}')">Take Quiz</button>
               </div>
@@ -82,7 +82,7 @@ $(document).ready(function() {
                 <label for="${i+1}c">${module.quiz[0].quize[i].Options[2]}</label><br>
                 <input type="radio" name="question${i+1}" value="4" id="${i+1}d">
                 <label for="${i+1}d">${module.quiz[0].quize[i].Options[3]}</label><br>
-                <button id="close-button" class="close-button" onclick="closeQuiz('${module.module_name}')">Close</button>
+                <button id="close-button" class="closebutton" onclick="closeQuiz('${module.module_name}')">Close</button>
                 
               </div>
               <div class="quiz-buttons">
@@ -115,6 +115,7 @@ $(document).ready(function() {
   }  });
  
 })
+
 
 function submitQuiz(quizId, correctOptions) {
   var module = document.getElementById(quizId); 
@@ -231,9 +232,6 @@ $.ajax({
                
  // Set the progress value here
 
-function updateProgressBar() {
-  progressBar.style.width = progressPercentage + '%';
-}
 
 updateProgressBar();
 
