@@ -134,7 +134,7 @@ async function addSection(req, res) {
     qui=[]
     let currentModule = {
       module_name: modules[i].module_name,
-      youtube_link: modules[i].youtube_link,
+      youtube_link: modules[i].youtube,
       quiz: []
     };
     console.log(modules[i].quiz.length)

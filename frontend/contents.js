@@ -17,9 +17,11 @@ $(document).ready(function() {
            
     $('#course-data').append(`<h1>${courseData.course_name}</h1>`);
     $('#course-data').append(`<p>${courseData.course_description}</p>`);
-   
 
     $('#course-data').append(`<p>INSTRUCTOR EMAIL : ${courseData.Instrutor_Email}</p>`);
+    $('#course-data').append(`<div  class=" progress-bar">
+    <div class="progress" id="s"></div>
+  </div>`)
     console.log(courseData.sections)
     // Loop through the sections and modules to add them to the HTML
     for (const section of courseData.sections) {
@@ -27,12 +29,15 @@ $(document).ready(function() {
         <section class="section">
           <div class="section-header">
             <h2>${section.section_name}</h2>
+ 
           </div>
       `
       $('#course-data').append(sectionHtml);
     
 
       for (const module of section.modules) {
+      
+
         let moduleHtml = `
           <div class="module" onclick="location.href='#'">
             <div class="module-name">${module.module_name}</div>
@@ -114,7 +119,7 @@ $(document).ready(function() {
 function submitQuiz(quizId, correctOptions) {
   var module = document.getElementById(quizId); 
    console.log(correctOptions)
-  var length = $('.quizc').length;
+  var length = correctOptions.length;
   const selectedOptions = [];
   const optionElements = [];
 
@@ -135,6 +140,7 @@ function submitQuiz(quizId, correctOptions) {
   }    
 
   // If the user hasn't selected an option for every question, show an error message
+  console.log(length)
   if (selectedOptions.length !== length) {
     alert("Please answer all questions before submitting.");
     return;
@@ -155,6 +161,7 @@ function submitQuiz(quizId, correctOptions) {
   // Show the user's score
   const score = (numCorrect / selectedOptions.length) * 100;
   alert(`You scored ${score}% on the quiz.`);
+ 
   if (score ==100){
     update={
   email:localStorage.getItem('k'),
@@ -170,6 +177,7 @@ console.log(update)
       data:update,
 success: function(data) {
   console.log(data);
+  window.location.reload()
 },error: function(err) {
 alert(err);   }})
  
@@ -178,8 +186,79 @@ alert(err);   }})
   } 
   }
 
+  const email =  window.localStorage.getItem("k")
+  $.ajax({
+    method: 'GET',
+    url: " http://127.0.0.1:9999/userProfile/"+email,
+    success: (data) => {
+      console.log(data)
+      var course_name = localStorage.getItem("selectedCourseIndex")
+      console.log(course_name)
+      courses = data[0].coursesEnrolled
+      console.log(courses)
+      // console.log(courses)
+      for(var i=0; i<courses.length; i++){
+          if(courses[i].name === course_name){
+              console.log(courses[i].name)
+              const numCompletedModules= courses[i].modules.length
+              console.log(numCompletedModules)
+              // Get course ID from URL or from another source
+// var coursename = "Introduction to Programming";
+var coursename = localStorage.getItem("selectedCourseIndex")
 
+// Make AJAX request to retrieve course data
+$.ajax({
+  url: 'http://localhost:9999/' + coursename,
+  type: 'POST',
+  dataType: 'json',
+  success: function(data) {
+    var courseData = data;
+    // Count the total number of modules in the course
+    var totalNumOfModules = 0;
+    for (const section of courseData.sections) {
+      totalNumOfModules += section.modules.length;
+    }
+    console.log("Total number of modules in the course: " + totalNumOfModules);
 
+    // Populate course data in HTML elements
+    // ...
+    const progressPercentage = (numCompletedModules / totalNumOfModules) * 100;
+                      console.log(progressPercentage)
+                     
+                      var s = document.getElementById("s")
+
+                  s.style.width = progressPercentage + '%'
+               
+ // Set the progress value here
+
+function updateProgressBar() {
+  progressBar.style.width = progressPercentage + '%';
+}
+
+updateProgressBar();
+
+  }
+});
+
+                      
+                  }
+              }
+          }
+      }
+      
+    
+     
+    
+  )
+// Fetch the number of completed modules from the user database
+// const numCompletedModules = 80;
+
+// // Calculate the progress percentage
+// const progressPercentage = (numCompletedModules / totalModules) * 100;
+
+// Update the width of the progress bar
+const progressBar = document.querySelector('.progress');
+progressBar.style.width = progressPercentage + '%';
 
 // function checkAnswer(quizId, correctAnswer ,course_name,module) {
 //   var quiz = document.getElementById(quizId);

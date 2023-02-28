@@ -218,7 +218,31 @@
     font-size: 28px;
     font-weight: bold;
   } */
+  .progress-bar {
+  background-color: #0ee031;
+  height: 20px;
+  width: 50%;
+  align-items: center;
+  margin-left: 280px;
+}
 
+.progress {
+  background-color: #da1d0f;
+  height: 100%;
+  width: 0;
+  transition: width 0.3s ease-in-out;
+  box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+}
+
+.progress::-webkit-progress-bar {
+  background-color: yellow;
+  border-radius: 7px;
+}
+.progress::-webkit-progress-value {
+  background-color: blue;
+  border-radius: 7px;
+  box-shadow: 1px 1px 5px 3px rgba( 255, 0, 0, 0.8 );
+}
   .close-button:hover,
   .close-button:focus {
     color: black;
@@ -372,7 +396,7 @@ function showQuizQuestion(quizId, questionNumber) {
 //   function checkAnswer(selectedOption, question) {
 //   // get the correct option number as a string
 //   var selectedOption = document.querySelector('input[name=question1]:checked').value;
-//   const correctOption = question.CorrectOption.toString();
+//   const correctOption = question.CorrectOption.somethingtoString();
 
 //   // check if the selected option matches the correct option
 //   if (selectedOption === correctOption) {
@@ -416,9 +440,12 @@ function showQuizQuestion(quizId, questionNumber) {
       //   window.location.href="coursecontent.html"
       // }
       </script>
-      <script src="contents.js"></script>
 </head>
 <body id="course-data">
+  <!-- <div class="progress-bar">
+    <div class="progress" id="s"></div>
+  </div> -->
+  
   <!-- <header>
     <h1>Course Name</h1>
     <p>Instructor Name</p>
@@ -476,5 +503,6 @@ function showQuizQuestion(quizId, questionNumber) {
         </div>
       </section> -->
 <!-- </main> -->
+<script src="contents.js"></script>
 </body>
 </html>      
