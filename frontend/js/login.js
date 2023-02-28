@@ -41,7 +41,7 @@ window.onload=function(){
     let us=JSON.stringify(obj);
     console.log(us)
     $.ajax({
-      "method":"POST",contentType:"application/json",'data':us,'url':'http://127.0.0.1:9999/a',
+      "method":"POST",contentType:"application/json",'data':us,'url':'http://3.238.32.213:9999/a',
       "success":(e)=>{alert("sucessfully added")},error:(e)=>{alert(e)}
     });
   
@@ -74,7 +74,7 @@ window.onload=function(){
     }else{
     let login = JSON.stringify(udl);
     $.ajax({
-      "method":"POST",contentType:"application/json",'data':login,'url':'http://127.0.0.1:9999/a/login',
+      "method":"POST",contentType:"application/json",'data':login,'url':'http://3.238.32.213:9999/a/login',
       "success":function(e){
         if(e){
           // console.log(e.role)
