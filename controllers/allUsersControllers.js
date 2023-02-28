@@ -76,7 +76,7 @@ function studentToUserStep1(req, res){
             console.log(req.body)
             
             UserCTRl.User.updateOne({email:req.body.email},
-                {$set:{isInstructor:"pending",Message:req.body.Message,File:req.file.path,Linked:req.body.Linked}},(err,docs) =>{
+                {$set:{isInstructor:"pending",Message:req.body.Message,File:req.file.location,Linked:req.body.Linked}},(err,docs) =>{
                 if(err){
                     console.log(err)
                 }else{

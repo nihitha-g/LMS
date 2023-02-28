@@ -1,22 +1,52 @@
+const { S3Client } = require('@aws-sdk/client-s3');
+
+const dotenv = require('dotenv')
 const path = require('path')
 const multer = require('multer')
+const multerS3 = require('multer-s3')
+dotenv.config()
 
-const storage = multer.diskStorage({
-    destination: function (req,File,cb){
-        //own logic on dest
-        //aws/s3
-        //req.body.ids
-        cb(null,"Uploads/");
+// const storage = multer.diskStorage({
+//     destination: function (req,File,cb){
+//         //own logic on dest
+//         //aws/s3
+//         //req.body.ids
+//         cb(null,"Uploads/");
+//     },
+//     filename:function(req,file,cb){
+//         // let ext = path.extname(file.originalname)
+//         cb(null,file.originalname);
+//     },
+// });
+
+// const upload = multer({
+//     storage:storage
+// })
+
+let s3 = new S3Client({
+    region: process.env.AWS_REGION,
+    credentials: {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_ACCESS_SECRET_ACCESS_KEY,
     },
-    filename:function(req,file,cb){
-        // let ext = path.extname(file.originalname)
-        cb(null,file.originalname);
-    },
-});
+    sslEnabled: false,
+    s3ForcePathStyle: true,
+    signatureVersion: 'v4',
+  });
 
 const upload = multer({
-    storage:storage
-})
+    storage: multerS3({
+      s3: s3,
+      bucket:'teamrocket',
+      metadata: function (req, file, cb) {
+        cb(null, {fieldName: file.fieldname});
+      },
+      key: function (req, file, cb) {
+        console.log("Hero");
+        cb(null, Date.now().toString()+path.parse(file.originalname).name+ path.extname(file.originalname))
+      }
+    })
+  })
 module.exports = upload
 // app.post("/image",(req,res) =>{
     //     upload(req,res,(err) =>{

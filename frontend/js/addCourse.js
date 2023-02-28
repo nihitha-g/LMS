@@ -33,7 +33,7 @@ function Add_Course() {
 
 get_Courses()
 function get_Courses(){
-    $.get("http://127.0.0.1:9999/get_Courses",function(data,status){
+    $.get("http://44.192.4.165:9999/get_Courses",function(data,status){
         for(let i=0;i<data.length;i++){
             document.querySelector('#adding').innerHTML+=`
             <div class="col-lg-6">
