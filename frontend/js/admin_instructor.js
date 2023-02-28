@@ -2,7 +2,7 @@ get_req()
 
 
 function get_req(){ return new Promise((res, rej) => {
-    $.get("http://127.0.0.1:9999/a", function(data, status){
+    $.get("http://3.238.32.213:9999/a", function(data, status){
         res(console.log(data));
         count=1
         for(let i=0; i<data.length; i++){

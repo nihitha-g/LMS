@@ -416,7 +416,7 @@
     <script>
         $.ajax({
         type: "GET",
-        url: "http://localhost:9999/get_users_data/get_user",
+        url: "http://3.238.32.213:9999/get_users_data/get_user",
         
         success: function(result) {
             const students = result.filter(obj => obj.role === "student");
