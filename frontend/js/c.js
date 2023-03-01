@@ -61,7 +61,7 @@ function addCourse() {
     method: "POST",
     contentType: "application/json",
     data: dat,
-    url: "http://localhost:9999/c",
+    url: "http://54.225.131.17:9999/c",
     success: (result) => {
       alert("sucessfully added");
     },
@@ -149,7 +149,7 @@ function addSection() {
     method: "POST",
     contentType: "application/json",
     data: sdat,
-    url: "http://localhost:9999/quiz/section",
+    url: "http://54.225.131.17:9999/quiz/section",
     success: (result) => {
       alert("sucessfully added");
       window.location.reload()

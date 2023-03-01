@@ -12,7 +12,7 @@ function get_req() {
   var ind = localStorage.getItem("selectedCourseIndex")
   console.log(ind)
 
-  $.post("http://127.0.0.1:9999/" + ind, function (data, status) {
+  $.post("http://54.225.131.17:9999/" + ind, function (data, status) {
 
     console.log(data);
     // for (let i = 0; i < data.length; i++) {
@@ -137,7 +137,7 @@ a()
 
 $.ajax({
   method: 'GET',
-  url: " http://127.0.0.1:9999/userProfile/"+email,
+  url: " http://54.225.131.17:9999/userProfile/"+email,
   success: (data) => {
     const email =  window.localStorage.getItem("k")
     console.log(data)
@@ -267,7 +267,7 @@ function enroll(){
           method: 'POST',
           contentType: "application/json",
           "data": obj,
-          url: 'http://localhost:9999/enroll/e',
+          url: 'http://54.225.131.17:9999/enroll/e',
            success: (e) => {
             console.log('Successfully enrolled in course:', obj);
           },
@@ -417,7 +417,7 @@ function fun2() {
   bhi = JSON.stringify({ Email: window.localStorage.getItem("k") })
   console.log(bhi)
   $.ajax({
-    "method": "POST", contentType: "application/json", "data": bhi, "url": "http://localhost:9999/LogOutUser/logout",
+    "method": "POST", contentType: "application/json", "data": bhi, "url": "http://54.225.131.17:9999/LogOutUser/logout",
     "success": (e) => {
       //alert("Successfully registered")
       window.localStorage.setItem("k", 1)

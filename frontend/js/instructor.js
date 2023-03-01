@@ -27,7 +27,7 @@ function addInstructor(){
                 contentType:false,
                 processData : false,
                 data:formData,
-                url:'http://3.238.32.213:9999/a/instructorUpdate',
+                url:'http://54.225.131.17:9999/a/instructorUpdate',
                 success:(e)=>{
                     alert("sucessfully added")
                 },
@@ -57,7 +57,7 @@ function Show(){
 
     // })
     $.ajax({
-        "method":"POST",contentType:"application/json",'data':JSON.stringify({email:Ins_Email}),'url':'http://3.238.32.213:9999/a/status',
+        "method":"POST",contentType:"application/json",'data':JSON.stringify({email:Ins_Email}),'url':'http://54.225.131.17:9999/a/status',
       "success":function(e) {
         console.log(e)
         if (e=='Approved'){

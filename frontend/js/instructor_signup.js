@@ -6,7 +6,7 @@ function Instructor(){
     console.log(obj)
     data = JSON.stringify(obj)
     $.ajax({
-      "method": "POST", contentType: "application/json", "data": data, "url": "http://localhost:9999/Instructor/login",
+      "method": "POST", contentType: "application/json", "data": data, "url": "http://54.225.131.17:9999/Instructor/login",
       "success": (e) => {
         alert("Successfully loggedin")
         window.localStorage.setItem("Ins",obj.Email)

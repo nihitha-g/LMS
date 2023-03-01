@@ -244,7 +244,7 @@
         email=localStorage.getItem("k")
         $.ajax({
         type: "GET",
-        url: "http://localhost:9999/course/"+email,
+        url: "http://54.225.131.17:9999/course/"+email,
         success: function(result) {
           
             $("#courseCount").text(result.length);
@@ -255,7 +255,7 @@
         email=localStorage.getItem("k")
         $.ajax({
         type: "GET",
-        url: "http://localhost:9999/course/"+email,
+        url: "http://54.225.131.17:9999/course/"+email,
         success: function(result) {
              console.log(result[0].Students_Enrolled)
 

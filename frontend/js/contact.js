@@ -18,7 +18,7 @@ data = {
 }
 
 $.ajax({
-    "method":"POST",contentType:"application/json",'data':JSON.stringify(data),'url':'http://localhost:9999/query/insert',
+    "method":"POST",contentType:"application/json",'data':JSON.stringify(data),'url':'http://54.225.131.17:9999/query/insert',
   "success":(e)=>{console.log("added")},error:(e)=>{alert(e)}
 });
 alert("Query sucessfully added")

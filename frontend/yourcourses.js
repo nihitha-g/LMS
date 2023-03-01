@@ -1,4 +1,4 @@
-$.get('http://localhost:9999/course/kukunuriabhiram.19.it@anits.edu.in',function(data,status){
+$.get('http://54.225.131.17:9999/course/kukunuriabhiram.19.it@anits.edu.in',function(data,status){
     console.log(data)
 
     $(document).ready(function(){

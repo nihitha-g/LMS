@@ -188,7 +188,7 @@ $('#quiz-form').submit(function(event) {
 
   // Send the AJAX request to the server
   $.ajax({
-    url: 'http://localhost:9999/get_quiz_questions/quiz',
+    url: 'http://54.225.131.17:9999/get_quiz_questions/quiz',
     method: 'POST',
     data: data,
     success: function(response) {
@@ -213,7 +213,7 @@ $('#quiz-form').submit(function(event) {
                 const email = window.localStorage.getItem('Ins')
                 console.log(email)
                 $.ajax({
-                  url: "http://localhost:9999/get_courses_names/courses_names/"+email,
+                  url: "http://54.225.131.17:9999/get_courses_names/courses_names/"+email,
                   type: "GET",
                   contentType: 'application/json',
                   success: function(courses) {

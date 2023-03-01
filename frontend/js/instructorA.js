@@ -3,7 +3,7 @@ function ShowIns(){
     var Ins_Email=$('#Ins_Email').val()
     var obj={Email:Ins_Email}
     $.ajax({
-        "method":"POST",contentType:"application/json",'data':JSON.stringify({Email:Ins_Email}),'url':'http://127.0.0.1:9999/getInstructorInfoA',
+        "method":"POST",contentType:"application/json",'data':JSON.stringify({Email:Ins_Email}),'url':'http://54.225.131.17:9999/getInstructorInfoA',
       "success":function(data,status){
         for(i=0;i<data.length;i++){
         document.querySelector('#table').innerHTML+=`<tbody>

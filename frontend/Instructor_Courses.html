@@ -120,50 +120,7 @@
                   <!-- END DATA TABLE -->
               </div>
           </div>
-          <!-- <div>
-            <table border="1px">
-              <thead>
-                <tr>
-                  <th>
-                    coure name
-                  </th>
-                  <th>Course Description</th>
-                  <th>Course Modules</th>
-                </tr>
-                <tr>
-                  <td>jnijenv</td>
-                  <td>sjnvv</td>
-                  <td>iffevb</td>
-                </tr>
-              </thead>
-            </table>
-          </div> -->
-            <!-- <div class="row">
-              <div class="col-12 grid-margin">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title"></h4>
-                    <div class="table-responsive">
-                      <table class="table" id="table">
-                        <thead>
-                          <tr>
-                            <th> Course Name </th>
-                            <th> Course Description </th>
-                            <th> Course Modules </th>
-                            
-                          </tr>
-                        </thead>
-                        <tbody>
-                          
-                          
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> -->
+          
           <div class="main-content">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
@@ -224,10 +181,9 @@
 
                 </div>
             </div>
-          <!-- <div class="row">
             <div class="col-md-12">
                 <!-- DATA TABLE -->
-                <!-- <h3 class="title-5 m-b-35">Course table</h3>
+                <h3 class="title-5 m-b-35">Course table</h3>
                 <div class="table-data__tool">
                     
                     
@@ -237,8 +193,8 @@
                     </table>
                 </div>
                 <!-- END DATA TABLE -->
-            <!-- </div>
-        </div> --> 
+            </div>
+        </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <!-- <footer class="footer">
@@ -256,20 +212,32 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
 
-    <!-- <script>
-     const email= localStorage.getItem('k')
-      $.get('http://localhost:9999/course/'+ email,function(data,status){
-          console.log(data)
-          var dat={
-            "course_name": data.course_name,
-            "course_description": data.course_description
+    <!-- <script>33
+      $.post('http://54.225.131.17:9999/quiz/course',function(data,status){
+            console.log(data)
+            $(document).ready(function(){
+                $.noConflict();
+                var table = $('#course_table').DataTable({
+                    data:data,
+                    columns:[
+                        { data : 'course_name',title:'course_name'},
+                        { data : 'course_description',title:'course_description'},
+                        { data : 'Instrutor_Email',title:'Instrutor_Email'},
+                        {data: 'Students_Enrolled',title: 'Students_Enrolled'}
+                                        ],
+                    responsive: true
+                })
 
-          }
+            })
+        })
+
+     const email= "kukunuriabhiram.19.it@anits.edu.in"
+      $.get('http://54.225.131.17:9999/course/'+ email,function(data,status){
           console.log(data.course_name)
           $(document).ready(function(){
               // $.noConflict();
               var table = $('#table').DataTable({
-                  data:dat,
+                  data:data,
                   columns:[
                      [
                        { data : 'course_name',title:'course_name'},

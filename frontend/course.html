@@ -229,7 +229,7 @@ function fun2(){
     bhi = JSON.stringify({Email:window.localStorage.getItem("k")})
     console.log(bhi)
     $.ajax({
-        "method": "POST", contentType: "application/json","data":bhi , "url": "http://localhost:9999/LogOutUser/logout",
+        "method": "POST", contentType: "application/json","data":bhi , "url": "http://54.225.131.17:9999/LogOutUser/logout",
     "success": (e) => {
       //alert("Successfully registered")
       window.localStorage.setItem("k",1)
