@@ -7,7 +7,7 @@ function get_req(){ return new Promise((res, rej) => {
     email=window.localStorage.getItem("k")
 console.log(email)
 
-    $.get("http://54.225.131.17:9999/course/"+email, function(data, status){
+    $.get("https://teamrocketapi.prashantdey.in/course/"+email, function(data, status){
         res(console.log(data));
         count=1
         for(let i=0; i<data.length; i++){

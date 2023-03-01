@@ -27,7 +27,7 @@ function addInstructor(){
                 contentType:false,
                 processData : false,
                 data:formData,
-                url:'http://54.225.131.17:9999/a/instructorUpdate',
+                url:'https://teamrocketapi.prashantdey.in/a/instructorUpdate',
                 success:(e)=>{
                     alert("sucessfully added")
                 },
@@ -57,7 +57,7 @@ function Show(){
 
     // })
     $.ajax({
-        "method":"POST",contentType:"application/json",'data':JSON.stringify({email:Ins_Email}),'url':'http://54.225.131.17:9999/a/status',
+        "method":"POST",contentType:"application/json",'data':JSON.stringify({email:Ins_Email}),'url':'https://teamrocketapi.prashantdey.in/a/status',
       "success":function(e) {
         console.log(e)
         if (e=='Approved'){

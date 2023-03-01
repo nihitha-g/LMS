@@ -7,7 +7,7 @@ function retrieveSelectedCourse() {
 }
 
 function get_req(){  
-  $.post("http://54.225.131.17:9999/quiz/course", function(data, status){
+  $.post("https://teamrocketapi.prashantdey.in/quiz/course", function(data, status){
   
     
      console.log(data);

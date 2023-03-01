@@ -12,7 +12,7 @@ if(roll=='Instructor'){
     document.getElementById("requestButton").className="instructorButton intro";
 }
 
-$.get("http://54.225.131.17:9999/userProfile/"+user_email, function(data, status){
+$.get("https://teamrocketapi.prashantdey.in/userProfile/"+user_email, function(data, status){
     console.log(data)
     console.log(data[0].userName)
     let main_name = document.getElementById("main_name")

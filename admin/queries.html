@@ -277,7 +277,7 @@ $.ajax({
     <script>
         $.ajax({
         type: "POST",
-        url: "/get-user-count",
+        url: "https://teamrocketapi.prashantdey.in/get-user-count",
         success: function(result) {
             $("#user-count").text(result.count);
         }
@@ -321,7 +321,7 @@ $.ajax({
     <script src="js/main.js"></script>
 
     <script>
-        $.get('http://54.225.131.17:9999/get_queries_data/get_queries',function(data,status){
+        $.get('https://teamrocketapi.prashantdey.in/get_queries_data/get_queries',function(data,status){
             console.log(data)
             $(document).ready(function(){
                 $.noConflict();

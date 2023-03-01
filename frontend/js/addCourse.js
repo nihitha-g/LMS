@@ -25,7 +25,7 @@ function Add_Course() {
         "method": "POST",
         contentType: "application/json",
         'data': ins,
-        'url': 'http://54.225.131.17:9999/AddCourses',
+        'url': 'https://teamrocketapi.prashantdey.in/AddCourses',
         "success": (e) => { alert("successfully added") },
         error: (e) => { alert(e) }
     })
@@ -33,7 +33,7 @@ function Add_Course() {
 
 get_Courses()
 function get_Courses(){
-    $.get("http://54.225.131.17:9999/get_Courses",function(data,status){
+    $.get("https://teamrocketapi.prashantdey.in/get_Courses",function(data,status){
         for(let i=0;i<data.length;i++){
             document.querySelector('#adding').innerHTML+=`
             <div class="col-lg-6">

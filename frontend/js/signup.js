@@ -26,7 +26,7 @@ function login_req2(){
   }else{
   data = JSON.stringify(obj)
   $.ajax({
-    "method": "POST", contentType: "application/json", "data": data, "url": "http://54.225.131.17:9999/registerUser/login",
+    "method": "POST", contentType: "application/json", "data": data, "url": "https://teamrocketapi.prashantdey.in/registerUser/login",
     "success": (e) => {
       // alert("Successfully loggedin")
       window.localStorage.setItem("k",obj.Email)
@@ -47,7 +47,7 @@ function login_req2(){
     console.log(data)
     data = JSON.stringify(data)
     $.ajax({
-      "method": "POST", contentType: "application/json", "data": data, "url": "http://54.225.131.17:9999/registerUser",
+      "method": "POST", contentType: "application/json", "data": data, "url": "https://teamrocketapi.prashantdey.in/registerUser",
       "success": (e) => {
         alert("Successfully registered")
         // location.href="index.html"

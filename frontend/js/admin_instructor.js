@@ -2,7 +2,7 @@ get_req()
 
 
 function get_req(){ return new Promise((res, rej) => {
-    $.get("http://54.225.131.17:9999/a", function(data, status){
+    $.get("https://teamrocketapi.prashantdey.in/a", function(data, status){
         res(console.log(data));
         count=1
         for(let i=0; i<data.length; i++){
@@ -72,7 +72,7 @@ function get_req(){ return new Promise((res, rej) => {
                     let ins=JSON.stringify(obj);
                     console.log("accept",ins)
                     $.ajax({
-                        "method":"POST",contentType:"application/json",'data':ins,'url':'http://54.225.131.17:9999/a/acceptOrReject',
+                        "method":"POST",contentType:"application/json",'data':ins,'url':'https://teamrocketapi.prashantdey.in/a/acceptOrReject',
                     "success":(e)=>{console.log("sucessfully accepted")},error:(e)=>{alert(e)}
                     }); 
                     location.reload()
@@ -83,7 +83,7 @@ function get_req(){ return new Promise((res, rej) => {
                     }
                     let ins=JSON.stringify(obj);
                     $.ajax({
-                        "method":"POST",contentType:"application/json",'data':ins,'url':'http://54.225.131.17:9999/a/acceptOrReject',
+                        "method":"POST",contentType:"application/json",'data':ins,'url':'https://teamrocketapi.prashantdey.in/a/acceptOrReject',
                     "success":(e)=>{console.log("sucessfully rejected")},error:(e)=>{alert(e)}
                     });  
                     location.reload()

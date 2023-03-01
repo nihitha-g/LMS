@@ -416,7 +416,7 @@
     <script>
         $.ajax({
         type: "GET",
-        url: "http://3.238.32.213:9999/get_users_data/get_user",
+        url: "https://teamrocketapi.prashantdey.in/get_users_data/get_user",
         
         success: function(result) {
             const students = result.filter(obj => obj.role === "student");
@@ -433,7 +433,7 @@
         });
         $.ajax({
         type: "GET",
-        url: "http://localhost:9999/get_users_data/get_user",
+        url: "https://teamrocketapi.prashantdey.in/get_users_data/get_user",
         
         success: function(result) {
             const students = result.filter(obj => obj.role === "student");
@@ -451,7 +451,7 @@
 
         $.ajax({
         type: "POST",
-        url: "http://localhost:9999/quiz/course",
+        url: "https://teamrocketapi.prashantdey.in/quiz/course",
         
         success: function(result) {
             console.log(result)
@@ -461,7 +461,7 @@
 
         $.ajax({
         type: "GET",
-        url: "http://localhost:9999/getinstructor/getinstdetails",
+        url: "https://teamrocketapi.prashantdey.in/getinstructor/getinstdetails",
         success: function(result) {
             $("#instructorCount").text(result.count);
         }
@@ -469,7 +469,7 @@
 
         $.ajax({
         type: "GET",
-        url: "http://localhost:9999/getnoofqueries/getqueries",
+        url: "https://teamrocketapi.prashantdey.in/getnoofqueries/getqueries",
         success: function(result) {
             $("#countqueries").text(result.count);
         }
