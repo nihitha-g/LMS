@@ -5,7 +5,7 @@ $(document).ready(function() {
     
     // Make AJAX request to retrieve course data
     $.ajax({
-      url: 'http://54.225.131.17:9999/' + coursename,
+      url: 'https://teamrocketapi.prashantdey.in/' + coursename,
       type: 'POST',
       dataType: 'json',
       success: function(data) {
@@ -172,7 +172,7 @@ function submitQuiz(quizId, correctOptions) {
 console.log(update)
  update =JSON.stringify(update)
         $.ajax({
-      url: 'http://54.225.131.17:9999/a/CourseComplete',
+      url: 'https://teamrocketapi.prashantdey.in/a/CourseComplete',
       type: 'POST',
       contentType: 'application/json',
       data:update,
@@ -190,7 +190,7 @@ alert(err);   }})
   const email =  window.localStorage.getItem("k")
   $.ajax({
     method: 'GET',
-    url: " http://54.225.131.17:9999/userProfile/"+email,
+    url: "https://teamrocketapi.prashantdey.in/userProfile/"+email,
     success: (data) => {
       console.log(data)
       var course_name = localStorage.getItem("selectedCourseIndex")
@@ -209,7 +209,7 @@ var coursename = localStorage.getItem("selectedCourseIndex")
 
 // Make AJAX request to retrieve course data
 $.ajax({
-  url: 'http://54.225.131.17:9999/' + coursename,
+  url: 'https://teamrocketapi.prashantdey.in/' + coursename,
   type: 'POST',
   dataType: 'json',
   success: function(data) {
